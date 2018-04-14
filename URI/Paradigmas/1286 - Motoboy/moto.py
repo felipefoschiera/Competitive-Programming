@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # URI 1286 - Motoboy
 # Felipe G. Foschiera
-
 def knapSack(W, w, v, n):
     result = 0
     if ks[n-1][W] != 0: return ks[n-1][W]
