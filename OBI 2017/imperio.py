@@ -34,12 +34,3 @@ res = N
 sys.setrecursionlimit(10**5)
 dfs(1, -1)
 print(res) 
-
-'''
-4
-1 2
-2 3
-3 4
-
-g = [[], [2], [1, 3], [2, 4], [3]]
-'''
