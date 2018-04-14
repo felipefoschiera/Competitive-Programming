@@ -8,7 +8,7 @@ def knapSack(W , wt , val , n):
     # então o item não pode ser incluído na solução
     # e retornamos o código com um item a menos
     if wt[n-1] > W:
-        return knapSack(W , wt , val , n-1)
+        return knapSack(W, wt, val, n-1)
     # retorna o valor máximo entre dois casos:
     # (1) n item incluso
     # (2) nao incluso
