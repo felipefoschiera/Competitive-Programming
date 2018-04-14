@@ -1,11 +1,21 @@
+# -*- coding: utf-8 -*-
+
 while True:
-
-
     try:
-        a, b = input().split()
-        if a.isdigit() and b.isdigit():
-            print(a + b)
-        else:
-
+        num = int(input())
+        diag_principal = 0
+        diag_secundaria = num - 1
+        for i in range(num):
+            linha = ''
+            for j in range(num):
+                if j == diag_secundaria:
+                    linha += '2'
+                elif j == diag_principal:
+                    linha += '1'
+                else:
+                    linha += '3'
+            diag_principal += 1
+            diag_secundaria -= 1
+            print(linha)     
     except:
         break

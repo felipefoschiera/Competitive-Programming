@@ -16,9 +16,8 @@ while True:
         break
     quant_consumida = 0
     for _ in range(T):
-        dados = input().split(' ', 1)
-        N = int(dados[0])
-        alimento = dados[1]
+        N, alimento = input().split(' ', 1)
+        N = int(N)
         mg_alimento = alimentos[alimento]
         quant_consumida += N * mg_alimento
 

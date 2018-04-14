@@ -5,20 +5,12 @@ for _ in range(T):
     for _ in range(qt):
         a, b = input().split()
         if a == 'G':
-            if b == 'R':
-                green += 1
-            else:
-                green += 2
+            green += (1 if b == 'R' else 2)
         elif a == 'R':
-            if b == 'G':
-                red += 2
-            else:
-                red += 1
+            red += (2 if b == 'G' else 1)
         else:
-            if b == 'G':
-                blue += 1
-            else:
-                blue += 2
+            blue += (1 if b == 'G' else 2)
+            
     maior = max(red, green, blue)
     if red == green == blue:
         print("trempate")

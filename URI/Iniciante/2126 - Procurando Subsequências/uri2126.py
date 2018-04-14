@@ -3,8 +3,7 @@ while True:
     try:
         sequencia = input()
         numero = input()
-        count = 0
-        pos = 0
+        count = pos = 0
         if sequencia in numero:
             count += numero.count(sequencia)
             pos = numero.rfind(sequencia) + 1

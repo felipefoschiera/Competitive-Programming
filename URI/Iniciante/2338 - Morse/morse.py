@@ -2,7 +2,6 @@
 # URI 2338 - Morse
 # Felipe G. Foschiera
 
-
 morse_dict = {
     '=.===': 'a',
     '===.=.=.=': 'b',

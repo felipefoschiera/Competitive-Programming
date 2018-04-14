@@ -13,5 +13,4 @@ renas = {
     8: 'Blitzen',
     0: 'Rudolph'
 }
-
 print(renas[resto])    
