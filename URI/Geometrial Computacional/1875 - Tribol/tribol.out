@@ -1,0 +1,11 @@
+trempate
+trempate
+empate
+empate
+empate
+empate
+empate
+empate
+red
+green
+blue
