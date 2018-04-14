@@ -1,5 +1,4 @@
 def knapSack(W, w, v, n):
-    result = 0
     if ks[n-1][W] != 0: return ks[n-1][W]
     if n == 0 or W == 0: return 0
     if w[n-1] > W:
