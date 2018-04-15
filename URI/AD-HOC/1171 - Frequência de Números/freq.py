@@ -1,8 +1,11 @@
 quant_nums = int(input())
-nums = []
+nums = {}
 for _ in range(quant_nums):
     num = int(input())
-    nums.append(num)
-
-for num in sorted(list(set(nums))):
-    print(num, "aparece", nums.count(num), "vez(es)")
+    if num not in nums:
+        nums[num] = 1
+    else:
+        nums[num] += 1
+ordem = sorted(nums)
+for n in ordem:
+    print(n, 'aparece', nums[n], 'vez(es)')
