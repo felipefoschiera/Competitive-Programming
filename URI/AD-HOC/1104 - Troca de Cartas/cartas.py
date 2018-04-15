@@ -1,19 +1,16 @@
+# -*- coding: utf-8 -*-
+# Felipe G. Foschiera
+# URI 1104 - Troca de Cartas
 while True:
-    try:
-        numeros = input()
-        if numeros == '0 0':
-            break
-        A, B = list(map(int, numeros.split()))
-        alice = list(map(int, input().split()))
-        beatriz = list(map(int, input().split()))
-        a_unicas = list(set(alice))
-        b_unicas = list(set(beatriz))  
-
-        menor = min(a_unicas, b_unicas)
-        maior = max(a_unicas, b_unicas)
-        for i in range(len(maior)):
-            if maior[i] in menor:
-                menor.remove(maior[i])
-        print(len(menor))
-    except:
+    a, b = map(int, input().split())
+    if a == 0 and b == 0:
         break
+    cartas_a = set(map(int, input().split()))
+    cartas_b = set(map(int, input().split()))
+    a_new = cartas_a - cartas_b
+    b_new = cartas_b - cartas_a
+    print(min(len(a_new), len(b_new)))
+
+'''
+https://www.geeksforgeeks.org/sets-in-python/
+'''
