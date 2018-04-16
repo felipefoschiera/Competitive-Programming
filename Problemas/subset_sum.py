@@ -10,7 +10,7 @@ def isSubsetSum(set, n, sum):
 
 # Subset Sum DP
 def subsetSum(st, n, sm):
-    subset = [[True] * (sm+1)] * (n+1)
+    subset = [[True for _ in range(sm+1)] for _ in range(n+1)]
     for i in range(n+1): # if sum == 0
         subset[i][0] = True
     
