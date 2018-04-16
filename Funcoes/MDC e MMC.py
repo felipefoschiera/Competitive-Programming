@@ -12,3 +12,8 @@ def mdc_recursivo(a, b):
     if b == 0: return a
     return mdc_recursivo(b, a%b)
  
+
+# Menor Múltiplo Comum
+def mmc(a, b):
+    return a*b / mdc(a, b)
+    # Ex: mmc de 15 e 20 é 60, pois 300 / 5 = 60 
