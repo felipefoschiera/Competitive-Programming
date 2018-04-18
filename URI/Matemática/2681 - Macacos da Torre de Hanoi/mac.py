@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# Felipe G. Foschiera
+# URI 2681 - Macacos da Torre de Hanoi
 MOD = 86400
 N = int(input())
 movimentos = pow(2, N, MOD) - 1
