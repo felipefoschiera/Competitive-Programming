@@ -1,4 +1,3 @@
-import sys
 MAX = 1000
 memo = [None for i in range(MAX)]
 def fib(n):
