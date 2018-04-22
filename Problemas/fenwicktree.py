@@ -4,7 +4,8 @@ Aplicações:
     - OBI 2017: Arranha-céu
 '''
 def LSOne(S):
-    return S & (-S)
+    return S & (-S) 
+    
 
 class FenwickTree:
     def __init__(self, N):
