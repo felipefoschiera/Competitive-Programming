@@ -29,6 +29,6 @@ def knapsack(W, wt, v, n):
             continue
         else:
             soma_pesos += wt[i-1]
-            res -= val[i-1]
+            res -= v[i-1]
             w -= wt[i-1]
     print(soma_pesos)
