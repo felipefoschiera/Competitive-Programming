@@ -9,10 +9,8 @@ def subs(ped, string):
             if ind == len(ped): return 'Yes'
     return 'No'
 
-N = int(input())
-for _ in range(N):
-    string = input()
-    q = int(input())
+for _ in range(int(input())):
+    string, q = input(), int(input())
     for _ in range(q):
         st = input()
         print(subs(st, string))
