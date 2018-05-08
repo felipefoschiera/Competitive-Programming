@@ -10,5 +10,6 @@ for i in range(N+1):
 for i in range(N):
     res = ""
     for j in range(N):
-        res += ("U" if matriz[i][j] + matriz[i][j+1] + matriz[i+1][j] + matriz[i+1][j+1] < 2 else "S")
+        res += ("U" if matriz[i][j] + matriz[i][j+1] +
+                matriz[i+1][j] + matriz[i+1][j+1] < 2 else "S")
     print(res)

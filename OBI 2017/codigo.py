@@ -7,7 +7,7 @@ def valida():
         if combinacoes:
             for c in combinacoes:
                 if string in c:
-                   return string
+                    return string
         if strings:
             if string in strings:
                 return string
@@ -16,9 +16,10 @@ def valida():
                 conc2 = strings[i] + string
                 combinacoes.append(conc1)
                 combinacoes.append(conc2)
-            
+
         strings.append(string)
 
     return 'ok'
+
 
 print(valida())

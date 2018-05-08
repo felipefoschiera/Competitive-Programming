@@ -12,7 +12,7 @@ def pesquisaMapa(mapa, larg, alt):
             direcao = "UP"
         elif mapa[y][x] == "v":
             direcao = "DOWN"
-        
+
         if direcao == "RIGHT":
             x += 1
         elif direcao == "LEFT":
@@ -26,7 +26,6 @@ def pesquisaMapa(mapa, larg, alt):
         if mapa[y][x] == "*":
             return True
     return False
-            
 
 
 larg = int(input())
