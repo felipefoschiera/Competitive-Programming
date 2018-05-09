@@ -3,9 +3,11 @@ Aplicações:
     - URI 1804: Precisa-se de Matemáticos em Marte
     - OBI 2017: Arranha-céu
 '''
+
+
 def LSOne(S):
-    return S & (-S) 
-    
+    return S & (-S)
+
 
 class FenwickTree:
     def __init__(self, N):
@@ -22,4 +24,3 @@ class FenwickTree:
         while k < len(self.ft):
             self.ft[k] += v
             k += LSOne(k)
-

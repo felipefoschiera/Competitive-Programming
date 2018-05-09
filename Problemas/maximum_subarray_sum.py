@@ -4,7 +4,8 @@ n = len(array)
 best = soma = 0
 
 for i in range(n):
-    soma = max(array[i], soma+array[i]) # Maior valor entre adicionar o número ou começar por ele
+    # Maior valor entre adicionar o número ou começar por ele
+    soma = max(array[i], soma+array[i])
     best = max(best, soma)
 
 print(best)

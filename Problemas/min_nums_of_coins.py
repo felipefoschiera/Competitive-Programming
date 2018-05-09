@@ -18,6 +18,8 @@ import sys
 # print(solve(6151))
 
 coins = [1, 5, 10, 15, 25, 50]
+
+
 def coin(n):
     value = [sys.maxsize] * (n+1)
     value[0] = 0
@@ -26,4 +28,6 @@ def coin(n):
             if i-c >= 0:
                 value[i] = min(value[i], value[i-c]+1)
     return value[n]
+
+
 print(coin(100))
