@@ -25,6 +25,7 @@ int main() {
             scanf("%d %d %d", &u, &v, &w);
             u--, v--;
             AG[u][v] = w;
+            AG[u][u] = AG[v][v] = 0;
             if ((AG[u][v] != INFTO) && (AG[v][u] != INFTO))
                 AG[u][v] = AG[v][u] = 0;
         }

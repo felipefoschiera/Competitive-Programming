@@ -28,3 +28,4 @@ def subsetSum(st, n, sm):
             else:
                 subset[i][j] = subset[i-1][j] or subset[i-1][j - st[i-1]]
     return subset[n][sm]
+
