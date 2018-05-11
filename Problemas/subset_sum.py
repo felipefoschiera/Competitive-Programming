@@ -1,13 +1,11 @@
 # Subset Sum Recursivo
 def isSubsetSum(set, n, sum):
-
     if sum == 0:
         return True
     if n == 0 and sum != 0:
         return False
     if set[n-1] > sum:
         return isSubsetSum(set, n-1, sum)
-
     return isSubsetSum(set, n-1, sum) or isSubsetSum(set, n-1, sum-set[n-1])
 
 # Subset Sum DP
@@ -29,3 +27,12 @@ def subsetSum(st, n, sm):
                 subset[i][j] = subset[i-1][j] or subset[i-1][j - st[i-1]]
     return subset[n][sm]
 
+
+def isSubsetSumDP(coins, soma, M):
+    possible = [False] * (soma+1)
+    possible[0] = 0
+    for c in coins:
+        for i in range(soma-c, -1, -1):
+            if possible[i]:
+                possible[i+c] = True
+    return possible[soma]
