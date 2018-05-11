@@ -1,6 +1,6 @@
-Contar números de inversões/swaps para ordenar uma lista utilizando BIT (Binary Indexed Tree).
+# Contar números de inversões/swaps para ordenar uma lista utilizando BIT (Binary Indexed Tree).
 
-Ler https://goo.gl/Kne1aa
+# Ler https://goo.gl/Kne1aa
 
 def inversions(A): # A sendo a lista original de valores
 	res = 0
@@ -10,7 +10,7 @@ def inversions(A): # A sendo a lista original de valores
 		bit.update(A[i], 1)
 	return res	
 
-ou
+# ou
 
 for i, v in enumerate(A):
 		res += i - bit.sum(v)
