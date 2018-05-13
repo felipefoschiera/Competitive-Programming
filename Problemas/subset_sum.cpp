@@ -22,7 +22,7 @@ bool isSubsetSum(int coins[], int soma, int M)
 
 vi moedas;
 
-bool isSubsetSum(int sum, int n){
+bool isSubsetSum(int sum){
     vector<bool> possible(sum+1, false);
     possible[0] = true;
     for(auto c : moedas)
