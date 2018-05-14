@@ -13,8 +13,7 @@ bool cycle = false;
 void dfs(int s){
     visited[s] = 1;
     if(cycle) return;
-    for(int i = 0; i < (int)LG[s].size(); i++){
-        int v = LG[s][i]; // v é o iésimo vizinho de s
+    for(auto v : LG[s]){
         if(visited[v] == 1){
             cycle = true; return;
         }else if(!visited[v]){
