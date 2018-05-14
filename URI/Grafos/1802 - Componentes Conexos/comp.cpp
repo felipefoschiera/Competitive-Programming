@@ -1,5 +1,5 @@
 /**
- *  URI 1802 - Componentes Conexos
+ *  URI 1082 - Componentes Conexos
  *  Union-Find
  *  Felipe G. Foschiera
  * 
