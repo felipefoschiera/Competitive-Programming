@@ -1,16 +1,20 @@
+/**
+ *  URI 1764 - Itinerário do Papai Noel
+ *  Felipe G. Foschiera
+ */
 #include <stdio.h>
 #include <queue>
 using namespace std;
 typedef pair<int, int> ii;
 typedef vector<ii> vii;
-
-int V, A;
-vector<vii> LG; 
+typedef long long ll;
+int M, N;
+vector<vii> LG;
 vector<bool> visited;
 
-int prim(int s){
-    int cost = 0;
-    visited.assign(V, false);
+ll prim(int s){
+    ll cost = 0;
+    visited.assign(M, false);
     priority_queue<ii, vector<ii>, greater<ii>> Q;
     Q.push(ii(0, s));
     while(!Q.empty()){
@@ -28,19 +32,21 @@ int prim(int s){
         }
     }
     return cost;
+    
 }
 
-int main(){ 
-    scanf("%d %d", &V, &A);
-    LG.assign(V, vii());
-    int u, v, w;
-    for(int i = 0; i < A; i++){
-        scanf("%d %d %d", &u, &v, &w);
-        u--, v--;
-        LG[u].push_back(ii(v, w));
-        LG[v].push_back(ii(u, w));
+int main(){
+    while(scanf("%d %d", &M, &N)){
+        if(M == 0 && N == 0) break;
+        int i, u, v, w;
+        LG.assign(M, vii());    
+        for(i = 0; i < N; i++){
+            scanf("%d %d %d", &u, &v, &w);
+            LG[u].push_back(ii(v, w));
+            LG[v].push_back(ii(u, w));
+        }
+        ll ans = prim(0);
+        printf("%lld\n", ans);
     }
-    int custo = prim(0);
-    printf("%d\n", custo);
     return 0;
 }
