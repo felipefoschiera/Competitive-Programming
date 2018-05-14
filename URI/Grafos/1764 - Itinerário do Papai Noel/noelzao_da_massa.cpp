@@ -24,10 +24,8 @@ ll prim(int s){
         if(!visited[u]){
             visited[u] = true;
             cost += peso;
-            for(int i = 0; i < (int)LG[u].size(); i++){
-                int v = LG[u][i].first;
-                int w = LG[u][i].second;
-                Q.push(ii(w, v));
+            for(auto v : LG[u]){
+                Q.push(ii(v.second, v.first));
             }
         }
     }
