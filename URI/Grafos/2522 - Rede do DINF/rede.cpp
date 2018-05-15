@@ -35,7 +35,9 @@ int main(){
         vector<ii> pontos;
         vector<dii> arestas;
         int a, b;
+        pai.assign(N, 0);
         for(int i = 0; i < N; i++){
+            pai[i] = i;
             scanf("%d %d", &a, &b);
             pontos.push_back(ii(a, b));
         }
@@ -49,8 +51,6 @@ int main(){
         }
         double total = 0.0;
         sort(arestas.begin(), arestas.end());
-        pai.assign(N, 0);
-        for(int i = 0; i < N; i++) pai[i] = i;    
         for(auto e : arestas){
             if(!isSameSet(e.second.first, e.second.second)){
                 unionSet(e.second.first, e.second.second);

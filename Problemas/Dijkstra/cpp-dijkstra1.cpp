@@ -19,14 +19,21 @@ void dijkstra(int s){
     Q.push(ii(0, s));
     while(!Q.empty()){
         int u = Q.top().second; Q.pop();
-        for(int i = 0; i < (int)LG[u].size(); i++){
-            int v = LG[u][i].first;
-            int w = LG[u][i].second;
+        for(auto e : LG[u]){
+            int v = e.first, w = e.second;
             if(dist[v] > dist[u] + w){
                 dist[v] = dist[u] + w;
                 Q.push(ii(dist[v], v));
             }
         }
+        // for(int i = 0; i < (int)LG[u].size(); i++){
+        //     int v = LG[u][i].first;
+        //     int w = LG[u][i].second;
+        //     if(dist[v] > dist[u] + w){
+        //         dist[v] = dist[u] + w;
+        //         Q.push(ii(dist[v], v));
+        //     }
+        // }
     }
 }
 
