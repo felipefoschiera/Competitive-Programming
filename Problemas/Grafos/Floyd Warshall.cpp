@@ -1,7 +1,7 @@
-#include <iostream>
-#include <string.h>
 #include <stdio.h>
-#define MAX 512
+#include <string.h>
+#include <algorithm>
+#define MAX 112
 #define INFTO 0x3f3f3f3f
 using namespace std;
 
@@ -26,20 +26,8 @@ int main() {
             u--, v--;
             AG[u][v] = w;
             AG[u][u] = AG[v][v] = 0;
-            if ((AG[u][v] != INFTO) && (AG[v][u] != INFTO))
-                AG[u][v] = AG[v][u] = 0;
         }
         floydWarshall();
-        scanf("%d", &q);
-        while (q--) {
-            scanf("%d %d", &u, &v);
-            u--, v--;
-            if (AG[u][v] != INFTO)
-                printf("%d\n", AG[u][v]);
-            else
-                printf("Nao e possivel entregar a carta\n");
-        }
-        printf("\n");
     }
     return 0;
 }

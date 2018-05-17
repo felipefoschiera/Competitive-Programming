@@ -11,6 +11,7 @@ int coins[] = {1, 2, 3};
  * A recursão vai descendo e calculando o resultado para valores pequenos como 1, 2, 3
  * e torna rápido o cálculo com o solve para números maiores.
  */
+
 int solve(int x)
 {
     if (x < 0) return INF;
@@ -24,23 +25,6 @@ int solve(int x)
     ready[x] = true;
     return best;
 }
-/**
- *  solve(0) = 0
- * solve(1) = 1
- * solve(2) = 1
- * solve(3) = 1
- * solve(4) -> min(INF, solve(3)+1 -> 2) min(2, solve(2)+1 -> 2)... 
- * solve(4) = 2
- * solve(5) = min(INF, solve(4)+1 -> 3), min(3, solve(3)+1 -> 2), min(2, solve(2)+1 -> 2)
- * solve(5) = 2
- * solve(6) = min(INF, solve(5)+1 // solve(4)+1 // solve(3)+1)
- * solve(6) = 2
- * solve(7) = 3
- * solve(8) = 3
- * solve(9) = 3
- * solve(10) = min(INF, solve(9)+1, solve(8)+1, solve(7)+1)
- * solve(10) = 4
- */
 
 int main()
 {

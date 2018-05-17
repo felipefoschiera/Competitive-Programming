@@ -1,3 +1,5 @@
+n = W = 0
+ks = [[0 for _ in range(n+1)] for _ in range(W+1)]
 def knapSack(W, w, v, n):
     if ks[n-1][W] != 0:
         return ks[n-1][W]
