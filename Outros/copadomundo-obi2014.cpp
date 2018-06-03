@@ -3,7 +3,7 @@
  *  Felipe G. Foschiera
  */
 #include <stdio.h>
-#include <vector>
+#include <vector> 
 #include <algorithm>
 using namespace std;
 typedef pair<int, int> ii;
