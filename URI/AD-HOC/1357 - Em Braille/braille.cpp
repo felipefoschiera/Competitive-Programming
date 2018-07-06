@@ -1,3 +1,7 @@
+/**
+ *  URI 1357 - Em Braille
+ *  Felipe G. Foschiera
+ */
 #include <iostream>
 #include <map>
 using namespace std;
@@ -8,8 +12,6 @@ struct cb {
         return valor[0] == o.valor[0] && valor[1] == o.valor[1];
     }
 };
-
-map<int, cb> toBraile;
 cb braile[10];
 
 void start(){
@@ -23,8 +25,6 @@ void start(){
     braile[7] = {"**", "**"};
     braile[8] = {"*.", "**"};
     braile[9] = {".*", "*."};
-    for(int i = 0; i < 10; i++) toBraile[i] = braile[i];
-    
 }
 
 int equiv(cb br){
@@ -43,8 +43,8 @@ int main(){
         if(c == 'S'){
             string num;
             cin >> num;
-            for(int i = 0; i < N; i++) cout << toBraile[num[i] - '0'].valor[0] << (i == N-1 ? "\n" : " ");
-            for(int i = 0; i < N; i++) cout << toBraile[num[i] - '0'].valor[1] << (i == N-1 ? "\n" : " ");
+            for(int i = 0; i < N; i++) cout << braile[num[i] - '0'].valor[0] << (i == N-1 ? "\n" : " ");
+            for(int i = 0; i < N; i++) cout << braile[num[i] - '0'].valor[1] << (i == N-1 ? "\n" : " ");
             for(int i = 0; i < N; i++) cout << ".." << (i == N-1 ? "\n" : " ");
         }else if(c == 'B'){
             cb brailes[N];
