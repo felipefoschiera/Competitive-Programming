@@ -1,7 +1,3 @@
-/**
- *  URI 1357 - Em Braille
- *  Felipe G. Foschiera
- */ 
 #include <iostream>
 #include <map>
 using namespace std;
@@ -13,7 +9,7 @@ struct cb {
     }
 };
 
-map<char, cb> toBraile;
+map<int, cb> toBraile;
 cb braile[10];
 
 void start(){
@@ -27,15 +23,13 @@ void start(){
     braile[7] = {"**", "**"};
     braile[8] = {"*.", "**"};
     braile[9] = {".*", "*."};
-    for(int i = 0; i < 10; i++){
-        char c = *to_string(i).c_str();
-        toBraile[c] = braile[i];
-    }
+    for(int i = 0; i < 10; i++) toBraile[i] = braile[i];
+    
 }
 
-char equiv(cb br){
+int equiv(cb br){
     for(int i = 0; i < 10; i++)
-        if(braile[i] == br) return *to_string(i).c_str();
+        if(braile[i] == br) return i;
 }
 
 int main(){
@@ -49,8 +43,8 @@ int main(){
         if(c == 'S'){
             string num;
             cin >> num;
-            for(int i = 0; i < N; i++) cout << toBraile[num[i]].valor[0] << (i == N-1 ? "\n" : " ");
-            for(int i = 0; i < N; i++) cout << toBraile[num[i]].valor[1] << (i == N-1 ? "\n" : " ");
+            for(int i = 0; i < N; i++) cout << toBraile[num[i] - '0'].valor[0] << (i == N-1 ? "\n" : " ");
+            for(int i = 0; i < N; i++) cout << toBraile[num[i] - '0'].valor[1] << (i == N-1 ? "\n" : " ");
             for(int i = 0; i < N; i++) cout << ".." << (i == N-1 ? "\n" : " ");
         }else if(c == 'B'){
             cb brailes[N];
