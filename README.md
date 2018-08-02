@@ -1,1 +1,1 @@
-Funções, materiais, resoluções da OBI, Uri Online Judge e outros.
+Online Judges, materiais, resoluções da OBI e outros.
