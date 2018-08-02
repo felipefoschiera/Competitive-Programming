@@ -28,17 +28,3 @@ int minSwaps(int arr[], int n){
     }
     return ans;
 }
-
-int main(){
-    int T, n;
-    scanf("%d", &T);
-    while(T--){
-        scanf("%d", &n);
-        int seq[n];
-        for(int i = 0; i < n; i++){
-            scanf("%d", seq+i);
-        }
-        printf("%d\n", minSwaps(seq, n));
-    }
-    return 0;   
-}
