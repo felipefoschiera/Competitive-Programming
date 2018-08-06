@@ -25,3 +25,16 @@ void dfs(int s){
         }
     }
 }
+
+void dfsRecursiva(int u){
+    vis[u] = 1;
+    for(auto e : adj[u]){
+        if(!vis[e]) dfs(e);
+    }
+}
+
+int main(){
+    for(int i = 0; i < V; i++)
+        if(!vis[i]) dfs(i);
+    return 0;
+}
