@@ -1,50 +1,61 @@
 #include <stdio.h>
-#include <queue>
 #include <vector>
-#define INFTO ((int)1e9)
+#include <algorithm>
 using namespace std;
-
 typedef pair<int, int> ii;
-typedef vector<int> vi;
-typedef vector<ii> vii;
+typedef pair<int, ii> aresta;
 
-int V, A;
-vector<vii> LG;
-vector<bool> visited;
-
-int prim(int s){
-    int cost = 0;
-    visited.assign(V, false);
-    priority_queue<ii, vector<ii>, greater<ii>> Q;
-    Q.push(ii(0, s));
-    while(!Q.empty()){
-        int u = Q.top().second;         
-        int peso = Q.top().first;        
-        Q.pop();
-        if(!visited[u]){
-            visited[u] = true;
-            cost += peso;
-            for(auto v : LG[u]){
-                Q.push(ii(v.second, v.first));
+class UnionFind {
+private:
+    vector<int> p, rank;
+public:
+    UnionFind(int N){
+        p.assign(N+1, 0);
+        rank.assign(N+1, 0);
+        for(int i = 0; i <= N; i++) p[i] = i;
+    }
+    int findSet(int i){
+        return (p[i] == i ? i : p[i] = findSet(p[i]));
+    }
+    bool isSameSet(int i, int j) { return findSet(i) == findSet(j); }
+    void unionSet(int i, int j){
+        if(!isSameSet(i, j)){
+            int x = findSet(i), y = findSet(j);
+            if(rank[x] > rank[y]){
+                p[y] = x;
+            }else{
+                p[x] = y;
+                if(rank[x] == rank[y]) rank[y]++;
             }
         }
     }
-    return cost;
+};
+
+int kruskal(vector<aresta> arestas, int N){
+    UnionFind uf(N);
+    int soma = 0;
+    for(auto e : arestas){
+        if(!uf.isSameSet(e.second.first, e.second.second)){
+            uf.unionSet(e.second.first, e.second.second);
+            soma += e.first;
+        }
+    }
+    return soma;
 }
 
-int main(){ 
-    while(scanf("%d %d", &V, &A) && (V != 0 && A != 0)){
-        LG.assign(V, vii());
-        int i, u, v, w, soma = 0;
-        for(i = 0; i < A; i++){
+int main(){
+    int N, M;
+    while(scanf("%d %d", &N, &M), (N+M)){
+        vector<aresta> arestas;
+        int u, v, w, soma = 0; 
+        for(int i = 0; i < M; i++){
             scanf("%d %d %d", &u, &v, &w);
+            arestas.push_back(aresta(w, ii(u, v)));
             soma += w;
-            LG[u].push_back(ii(v, w));
-            LG[v].push_back(ii(u, w));
         }
-        int pathCost = prim(0);
-        printf("%d\n", soma - pathCost);
+        sort(arestas.begin(), arestas.end());
+        int ans = soma - kruskal(arestas, N);
+        printf("%d\n", ans);
     }
-
     return 0;
 }
