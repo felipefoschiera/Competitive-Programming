@@ -25,8 +25,8 @@ int knapsack(int W, int wt[], int v[], int n){
 // Memoria O(nW)
 int knapsack(int W, vi wt, vi v, int n){
     int ks[n+1][W+1];
-    for(int i = 0; i < n; i++){
-        for(int w = 0; w < W; w++){
+    for(int i = 0; i <= n; i++){
+        for(int w = 0; w <= W; w++){
             if(i == 0 || w == 0) ks[i][w] = 0;
             else if(wt[i-1] > w){
                 ks[i][w] = ks[i-1][w];
