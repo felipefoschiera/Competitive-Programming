@@ -22,7 +22,7 @@ ordered_set b[SQ];
 int n, m, u;
 ll a[MAX];
  
-// A query retorna o número de elementos menores que v no vetor.
+// A query retorna o número de elementos menores que v no intervalo.
 int query(int l, int r, int v) {
   int ans = 0;
   // Primeiro busca pelos blocos inteiramente dentro do intervalo dos blocos de L e R.
