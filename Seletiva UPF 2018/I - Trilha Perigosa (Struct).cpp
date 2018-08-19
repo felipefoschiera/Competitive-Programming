@@ -13,6 +13,14 @@ struct monstros {
 	}
 };
 
+/**
+ * 	Nesta versão, ao invés de utilizar a bitmask, utilizamos uma struct chamada monstros
+ * 	Que mantém um vetor com a quantidade de cada tipo de monstro naquele segmento.
+ * 	A função distintos() retorn a quantidade de tipos que tem mais de 0 monstros, ou seja, existem.
+ * 
+ */
+
+// Para unir segmentos, criamos uma nova struct com a soma das contagens dos vetores a serem somados.
 monstros operator + (const monstros a, const monstros b){
 	monstros c;
 	for(int i = 0; i < MAX; i++) c.count[i] = a.count[i] + b.count[i];
@@ -28,6 +36,7 @@ private:
 #define right(p) ((p << 1) + 1)
 	void build(int p, int l, int r){
 		if(l == r){
+			// Na hora da build, incrementamos no segmento a contagem do monstro de tipo A[l].
 			st[p].count[A[l]]++;
 		}else{
 			build(left(p), l, (l+r)/2);
@@ -38,6 +47,7 @@ private:
 	void update(int p, int l, int r, int ind, int v){
 		if(ind > r || ind < l) return;
 		if(l == ind && r == ind){
+			// Na hora da atualização, descontamos um monstro na contagem do antigo e incrementamos o novo.
 			int old = A[l];
 			st[p].count[old]--;
 			A[l] = v;

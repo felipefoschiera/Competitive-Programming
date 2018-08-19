@@ -3,6 +3,12 @@
 #include <stack>
 using namespace std;
 
+/**
+ * 	Para saber se podemos retirar os vagões como desejado, vamos empilhando os vagões
+ * 	na ordem de chegada, a partir de 1, e quando o vagão que chegou é o próximo a sair
+ * 	segundo a ordem da entrada, retiramos ele e avançamos para o próximo que se deseja retirar,
+ * 	retirando-o enquanto ele for o do topo da pilha.
+ */	
 int main(){
 	int N;
 	while(scanf("%d", &N), N){
@@ -21,8 +27,6 @@ int main(){
 			for(int i = 1; i <= N; i++){
 				pilha.push(i);
 				if(v[ind] == pilha.top()){
-					pilha.pop();
-					ind++;
 					while(!pilha.empty() && pilha.top() == v[ind]){
 						pilha.pop();
 						ind++;

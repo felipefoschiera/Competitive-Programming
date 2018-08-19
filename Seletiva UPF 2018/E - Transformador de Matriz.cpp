@@ -2,6 +2,14 @@
  *  Resolvido com SQRT Decomposition e Ordered Set
  *  Ensinado por Naum Azeredo via Telegram
  */
+
+/**
+ *  O ordered_set funciona como um set normal(aqui com a função do multiset, para ter elementos repetidos),
+ *  mas sua diferença é que ao utilizarmos uma função de pesquisa, como a lower_bound() (no caso do ordered_set,
+ *  é a order_of_key()), ao invés de apontarmos para o elemento, apontamos para o índice.
+ *  Portanto, a order_of_key(v) retorna o índice do primeiro elemento >= a v, que consequentemente é
+ *  a quantidade de elementos menores que v no conjunto ordenado.
+ */
 #include <cstdio>
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>

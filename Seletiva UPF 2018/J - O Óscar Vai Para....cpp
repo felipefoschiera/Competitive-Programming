@@ -2,6 +2,13 @@
 #define MAXN 1123
 #define MAXM 112
 
+/**
+ * Para resolver este problema, buscamos em cada ator qual é sua maior sequência crescente de batimentos.
+ * Mantemos junto com o tamanho da maior sequência o índice do seu fim, para podermos então
+ * verificar os pontos de desempate tendo o fim e o início, que é igual a (fim - tamanho + 1).
+ * 
+ */
+
 int main(){
     int N, M, mat[MAXN][MAXM], tc = 1;
     while(scanf("%d", &N), N){
