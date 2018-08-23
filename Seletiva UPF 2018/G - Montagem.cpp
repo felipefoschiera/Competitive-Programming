@@ -23,8 +23,11 @@ int n, dp[1 << MAX], cost[MAX][MAX];
  * 
  */
 
+int target;
+
 int solve(int bitmask, int done){
     if(dp[bitmask] != -1) return dp[bitmask];
+    if(bitmask == target) return 0;
     int best = INF;
     for(int i = 0; i < n; i++)
         if(!(bitmask & (1 << i)))
@@ -38,7 +41,7 @@ int main(){
             for(int j = 0; j < n; j++)
                 scanf("%d", &cost[i][j]);
         memset(dp, -1, sizeof dp);
-        dp[(1<<n)-1] = 0;
+        target = (1 << n) - 1;
         printf("%d\n", solve(0, 0));
     }
     return 0;
