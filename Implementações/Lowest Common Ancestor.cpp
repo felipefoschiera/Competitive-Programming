@@ -32,7 +32,7 @@ void computeP(int root) {
 	P[root][0] = root; D[root][0] = 0;
 	depthdfs(root);
 	for(int j = 1; j < MAXLOGN; j++)
-		for(int i = 0; i < N; i++) {
+		for(int i = 1; i <= N; i++) {
 			P[i][j] = P[P[i][j-1]][j-1];
 			D[i][j] = comp(D[P[i][j-1]][j-1], D[i][j-1]);
 		}
