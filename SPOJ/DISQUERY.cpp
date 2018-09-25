@@ -1,72 +1,72 @@
 #include <cstdio>
 #include <vector>
 using namespace std;
-    
-#define MAXN 10100
-#define MAXLOGN 14
-    
-vector <int> adj[MAXN], costs[MAXN], indexx[MAXN];
+#define INF ((int)1e9)
+#define MAXN 101010
+#define MAXLOGN 20
+
+typedef pair<int, int> ii;
+
+vector <int> adj[MAXN], costs[MAXN];
 int baseArray[MAXN], ptr;
 int chainNo, chainInd[MAXN], chainHead[MAXN], posInBase[MAXN];
-int depth[MAXN], pa[MAXLOGN][MAXN], otherEnd[MAXN], subsize[MAXN];
+int depth[MAXN], pa[MAXLOGN][MAXN], subsize[MAXN];
     
+ii comp(const ii a, const ii b){
+    return ii(min(a.first, b.first), max(a.second, b.second));
+
+}
+
 class SegmentTree {
+    
 private:
-    int st[MAXN*4], size;
+    ii st[MAXN*4];
+    int size;
 #define left(p) (p << 1)
 #define right(p) ((p << 1) + 1)
     void build(int p, int l, int r){
-        if(l == r-1) st[p] = baseArray[l];
+        if(l == r-1){ 
+            if(baseArray[l] == -1) st[p] = ii(INF, -INF);
+            else st[p] = ii(baseArray[l], baseArray[l]);
+        }
         else {
             build(left(p), l, (l+r)/2);
             build(right(p), (l+r)/2, r);
-            st[p] = max(st[left(p)], st[right(p)]);
+            st[p] = comp(st[left(p)], st[right(p)]);
         }
     }
-    void update(int p, int l, int r, int k, int val) {
-        if(l > k || r <= k) return;
-        if(l == k && l == r-1) {
-            st[p] = val;
-            return;
-        }
-        int m = (l+r)/2;
-        update(left(p), l, m, k, val);
-        update(right(p), m, r, k, val);
-        st[p] = max(st[left(p)], st[right(p)]); 
-    }
-    
-    int query(int p, int l, int r, int a, int b) {
-        if(l >= b || r <= a) return -1;
+    ii query(int p, int l, int r, int a, int b) {
+        if(l >= b || r <= a) return ii(INF, -INF);
         if(l >= a && r <= b) return st[p];
         int m = (l+r)/2;
-        int q1 = query(left(p), l , m, a, b);
-        int q2 = query(right(p), m, r, a, b);
-        return max(q1, q2);
+        ii q1 = query(left(p), l , m, a, b);
+        ii q2 = query(right(p), m, r, a, b);
+        return comp(q1, q2);
     }
 public:
     SegmentTree(int n){
         size = n;
         build(1, 0, size);
     }
-    void update(int k, int v) { update(1, 0, size, k, v); }
-    int query(int a, int b) { return query(1, 0, size, a, b); }
+    ii query(int a, int b) { return query(1, 0, size, a, b); }
     
 };
 
     
-int query_up(int u, int v, SegmentTree &st) {
-    if(u == v) return 0; 
-    int uchain, vchain = chainInd[v], ans = -1;
+ii query_up(int u, int v, SegmentTree &st) {
+    if(u == v) return ii(INF, -INF); 
+    int uchain, vchain = chainInd[v];
+    ii ans = ii(INF, -INF);
     while(1) {
         uchain = chainInd[u];
         if(uchain == vchain) {
             if(u == v) break;
-            int x = st.query(posInBase[v]+1, posInBase[u]+1);
-            if(x > ans) ans = x;
+            ii x = st.query(posInBase[v]+1, posInBase[u]+1);
+            ans = comp(ans, x);
             break;
         }
-        int x = st.query(posInBase[chainHead[uchain]], posInBase[u]+1);
-        if(x > ans) ans = x;
+        ii x = st.query(posInBase[chainHead[uchain]], posInBase[u]+1);
+        ans = comp(ans, x);
         u = chainHead[uchain]; 
         u = pa[0][u];
     }
@@ -86,19 +86,13 @@ int LCA(int u, int v) {
     return pa[0][u];
 }
     
-int query(int u, int v, SegmentTree &st) {
+ii query(int u, int v, SegmentTree &st) {
     int lca = LCA(u, v);
-    int res = query_up(u, lca, st); 
-    int b = query_up(v, lca, st);
-    if(b > res) res = b; 
+    ii res = query_up(u, lca, st); 
+    ii b = query_up(v, lca, st);
+    res = comp(res, b);
     return res;
 }
-    
-void change(int i, int val, SegmentTree &st) {
-    int u = otherEnd[i];
-    st.update(posInBase[u], val);
-}
-
 
 void HLD(int u, int par, int cost){
     if(chainHead[chainNo] == -1)
@@ -129,7 +123,6 @@ void dfs(int cur, int prev) {
     subsize[cur] = 1;
     for(int i = 0; i < (int)adj[cur].size(); i++)
         if(adj[cur][i] != prev) {
-            otherEnd[indexx[cur][i]] = adj[cur][i];
             depth[adj[cur][i]] = depth[cur] + 1;
             dfs(adj[cur][i], cur);
             subsize[cur] += subsize[adj[cur][i]];
@@ -146,20 +139,38 @@ void computeParentLCA(int n){
 
 void init_hld(int n){
     chainNo = 0;
+    ptr = 0;
     depth[0] = 0;
     dfs(0, -1);
     HLD(0, -1, -1);
     computeParentLCA(n);
 }
 
-/** Inicialização
- * 
- *  for(int i = 0; i < N; i++){
-        adjList[i].clear();
-        ind[i].clear();
-        costs[i].clear();
+int main(){
+    int N;
+    scanf("%d", &N);
+    int u, v, w;
+    for(int i = 0; i < N; i++){
         chainHead[i] = -1;
-        for(int j = 0; j < MAXLOGN; j++) pa[i][j] = -1;
+        for(int j = 0; j < MAXLOGN; j++) pa[j][i] = -1;
     }
- * 
- */
+    for(int i = 1; i < N; i++){
+        scanf("%d %d %d", &u, &v, &w);
+        u--, v--;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+        costs[u].push_back(w);
+        costs[v].push_back(w);
+    }
+    init_hld(N);
+    SegmentTree st(N);
+    int Q;
+    scanf("%d", &Q);
+    while(Q--){
+        scanf("%d %d", &u, &v);
+        u--, v--;
+        ii res = query(u, v, st);
+        printf("%d %d\n", res.first, res.second);
+    }
+    return 0;
+}
