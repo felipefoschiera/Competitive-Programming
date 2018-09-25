@@ -18,8 +18,8 @@ ll D[MAXN][MAXLOGN];
 
 void depthdfs(int u) {
     for(auto i : adjList[u]){
-		int v = i.first;
-        ll w = i.second;
+		int v = i.first; 
+		ll w = i.second;
 		if (v == P[u][0]) continue;
 		P[v][0] = u; D[v][0] = w;
 		level[v] = 1 + level[u];
