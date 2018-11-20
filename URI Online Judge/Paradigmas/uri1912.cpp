@@ -18,7 +18,7 @@ int main(){
                 mid = (lo + hi) / 2.0;
                 auto it = lower_bound(v, v+N, mid);
                 double areaSum = 0.0;
-                for(; it != v+N; it++){
+                for(; it != v+N; ++it){
                     if(*it >= mid) areaSum += (*it - mid);
                     if(areaSum > A) break;
                 }

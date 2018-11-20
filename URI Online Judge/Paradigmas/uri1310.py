@@ -1,7 +1,6 @@
 # -*- coding: utf-8
 # Felipe G. Foschiera
 # URI 1310 - Lucro
-# Maximum subarray sum - direto da entrada, sem colocar em array
 while True:
     try:
         N = int(input())
