@@ -1,29 +1,32 @@
 #include <iostream>
 #include <queue>
 #include <vector>
-#define INF ((int)1e9)
-
 using namespace std;
 typedef pair<int, int> ii;
-typedef vector<int> vi;
-typedef vector<ii> vii;
 
+
+const int MAX = 10101;
+const int INF = 1e9;
 int N, M;
-vector<vii> LG;
-vi dist;
+
+vector<ii> adj[MAX];
+vector<int> dist;
 
 void dijkstra(int s){
     dist.assign(N, INF);
     dist[s] = 0;
     priority_queue<ii, vector<ii>, greater<ii>> Q;
-    Q.push(ii(0, s));
+    Q.push({0, s});
     while(!Q.empty()){
-        int u = Q.top().second; Q.pop();
-        for(auto e : LG[u]){
+        int u = Q.top().second;
+        int d = Q.top().first;
+        Q.pop();
+        if(d > dist[u]) continue;
+        for(auto e : adj[u]){
             int v = e.first, w = e.second;
             if(dist[v] > dist[u] + w){
                 dist[v] = dist[u] + w;
-                Q.push(ii(dist[v], v));
+                Q.push({dist[v], v});
             }
         }
     }

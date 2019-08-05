@@ -1,3 +1,4 @@
+// Implementação retirada do Macacário do ITA
 #include <vector>
 #include <algorithm>
 using namespace std;
