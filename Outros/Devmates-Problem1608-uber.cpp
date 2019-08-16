@@ -20,7 +20,7 @@
                     sign = (x == '+');
                 }
             }
-            if(cursum > 0){
+            if(cursum){
                 if(!sign) cursum = -cursum;
                 sum += cursum;
             }
