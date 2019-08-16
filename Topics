@@ -34,7 +34,7 @@ Strongly Connected Components (tarjan algorithm)
 Articulation Points and Bridges
 Tree Diameter
 Lowest Common Ancestor / Binary Lifting on binary trees
-Heavy-Lighr Decomposition
+Heavy-Light Decomposition
 Steiner Tree
 Travelling Salesman Problem
 
