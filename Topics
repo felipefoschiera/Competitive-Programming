@@ -1,0 +1,80 @@
+Data Structures
+--------------------
+Basic data structures (C++ STL): 
+	Vector 
+	Queue 
+	Stack
+	Priority Queue
+	Set - efficient O(log n) operations 
+	Map - efficient O(log n) operations
+	Map hashing implementation - c++ unordered_map
+	Bitset
+
+Union-Find (disjoint sets data structure)
+Fenwick Tree ( efficient O(log n) range sum queries and updates)
+Segment Tree (efficient O(log n) range queries and updates (many operations))
+Segment Tree with Lazy Propagation (same but with range updates)
+Trie (strings data structure)
+Sparse table (range minimum query in O(1), no update)
+SQRT Decomposition (method for performing operations in O(sqrt n)
+
+Graph Theory
+--------------------------
+Graph Representation (adjacency list, adjacency matrix, edges list)
+DFS and BFS (graph search)
+Dijkstra's Algorithm (single source shortest path algorithm)
+Floyd-Warshall's Algorithm (all pairs shortest path algorithm)
+Flood-Fill 
+Finding connected components (uses union-find)
+Minimum Spanning Tree (Kruskal Algorithm, Prim Algorithm)
+Topological Sorting (ordering in a directed acyclic graph)
+Flow Algorithms (Edmonds-Karp, Dinic, Push-relabel)
+Bipartite Graphs problems (maximum matching, bipartite testing)
+Strongly Connected Components (tarjan algorithm)
+Articulation Points and Bridges
+Tree Diameter
+Lowest Common Ancestor / Binary Lifting on binary trees
+Heavy-Lighr Decomposition
+Steiner Tree
+Travelling Salesman Problem
+
+Dynamic Programming
+---------------------
+O(n) fibonacci with DP
+Longest Increasing Subsequence
+Knapsack Problem
+Longest Common Subsequence
+Edit Distance problem
+Coin Change problem
+Subset sum problem
+Digit DP
+Dp with Bitmask
+
+Math
+------------------
+Primality test
+Sieve of Eratosthenes (generating prime numbers)
+Prime Factors and problems
+Matrix operations
+Fibonacci numbers (fibonacci in O(log n) with matrix exponentiation)
+Modulo Arithmetic
+Modular Inverse
+Combinatorics
+Euler's totient function
+Probability
+Game Theory
+
+Geometry 
+---------------------
+Geometry topics, representation
+Sweep Line techniques 
+Convex Hull problem
+Closest pair of points O(n log n) with sweep line
+Union of rectangles
+
+Strings
+--------------
+Suffix Tree
+Suffix Array
+KMP
+
