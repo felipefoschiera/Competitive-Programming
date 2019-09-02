@@ -59,6 +59,7 @@ Matrix operations
 Fibonacci numbers (fibonacci in O(log n) with matrix exponentiation)
 Modulo Arithmetic
 Modular Inverse
+Fast Exponentiation
 Combinatorics
 Euler's totient function
 Probability
